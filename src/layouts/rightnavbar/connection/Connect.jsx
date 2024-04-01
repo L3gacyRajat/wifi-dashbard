@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import CustomScrollbar from '../../CustomScrollbar';
 import connectdata from './connectdata';
 
 const Connect = () => {
@@ -23,7 +24,8 @@ const Connect = () => {
   }, []); // useEffect will only run once on component mount
 
   return (
-    <div className='py-3'>
+    <div className='py-3 instrument' style={{ overflowY: 'auto', maxHeight: '200px', paddingRight: '20px' }}>
+      <CustomScrollbar width={5} className="instrument" thumbColor="#AEB9E1" hoverColor="#c4d1ff" />
       {connectdata.map((value) => (
         <div className='text-textcolor items-center dark:text-black text-1xl px-3 grid grid-cols-2 py-1 mb-2' key={value.id}>
           <img src={showDefaultImage ? 'white wifi.png' : getStatusImage(value.status)} className='w-6 bounce-animation' alt="Wifi Image" />
@@ -47,7 +49,6 @@ const getStatusImage = (status) => {
   }
 };
 
-// CSS styles as template literals
 const styles = `
   @keyframes bounce {
     0% {
