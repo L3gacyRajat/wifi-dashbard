@@ -12,6 +12,7 @@ import { useLocation } from "react-router-dom";
 
 const Dashboard = () => {
 
+  const [value, setValue] = useState("");
   // is rightnavbar open or not
   let isTabletMid = useMediaQuery({ query: "(max-width: 768px)" });
   const [open, setOpen] = useState(isTabletMid ? false : true);
@@ -97,21 +98,21 @@ const Dashboard = () => {
         <div className={`flex-1 grid ${(!detailstoggleOn && !infotoggleOn) || !open ? 'grid-rows-2' : 'grid-rows-3'} gap-2`}>
           {/* First Row */}
           <div className="grid grid-cols-1">
-            <div className="w-full bg-graphbg dark:bg-whit shadow-md rounded-md p-3 px-10 ">
-             
-              <LineChartComponent />
+            <div className="w-full bg-graphbg dark:bg-whit shadow-md rounded-md p-3">
+              <LineChartComponent/>
             </div>
           </div>
 
           {/* Second Row */}
-          <div className="grid sm:grid-cols-2 grid-cols-1 gap-2 ">
-            <div className="w-full bg-graphbg dark:bg-whit shadow-md rounded-md p-5 px-10">
+          <div className="grid sm:grid-cols-2 grid-cols-1 gap-2">
+            <div className="w-full bg-graphbg dark:bg-whit shadow-md rounded-md p-3">
               <BarChartComponent />
             </div>
-            <div className="w-full bg-graphbg dark:bg-whit shadow-md rounded-md p-5 px-10">
-              <LineChartComponent />
+            <div className="w-full bg-graphbg dark:bg-whit shadow-md rounded-md p-3">
+              <BarChartComponent/>
             </div>
           </div>
+
 
           {/* third Row */}
           <Detailsinfo

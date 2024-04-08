@@ -96,7 +96,7 @@ const Sidebar = () => {
         variants={Nav_animation}
         initial={{ x: isTabletMid ? -250 : 0 }}
         animate={open ? "open" : "closed"}
-        className=" bg-navbarbg text-textcolor shadow-xl z-[999] max-w-[16rem]  w-[16rem] 
+        className=" bg-navbarbg text-textcolor shadow-xl z-[999] max-w-[14rem]  w-[14rem] 
             overflow-hidden md:relative fixed
          h-screen dark:bg-lightbackground dark:text-black "
       >
@@ -111,7 +111,7 @@ const Sidebar = () => {
         </div>
 
         <div className="flex flex-col  h-full">
-          <ul className="whitespace-pre px-5 text-1xl py-5 flex flex-col gap-1  font-medium overflow-x-hidden scrollbar-thin scrollbar-track-white scrollbar-thumb-slate-100   md:h-[68%] h-[70%]">
+          <ul className="whitespace-pre px-2 text-1xl py-5 flex flex-col gap-1  font-medium overflow-x-hidden scrollbar-thin scrollbar-track-white scrollbar-thumb-slate-100   md:h-[68%] h-[70%]">
             <li>
               <NavLink to={"/"} className="link">
                 <MdOutlineDashboardCustomize size={20} className="min-w-max" />

@@ -87,11 +87,11 @@ const Rightnavbar = ({ detailhandleToggle, detailstoggleOn, infohandleToggle, in
                 variants={Nav_animation}
                 initial={{ x: isTabletMid ? -250 : 0 }}
                 animate={open ? "open" : "closed"}
-                className=" bg-navbarbg text-textcolor shadow-xl z-[999] max-w-[16rem]  w-[16rem] 
+                className=" bg-navbarbg text-textcolor shadow-xl z-[999] max-w-[15rem]  w-[15rem] 
             overflow-hidden md:relative fixed
          h-full dark:bg-lightbackground dark:text-black "
             >
-                <div className="relative h-full">
+                <div className="relative h-full max-w-[14rem] m-[auto]">
                     <div>
                         <div className="flex items-center gap-1 pt-3 pb-2 overflow-x-hidden scrollbar-thin scrollbar-track-white scrollbar-thumb-slate-100 " >
                             {
@@ -100,17 +100,17 @@ const Rightnavbar = ({ detailhandleToggle, detailstoggleOn, infohandleToggle, in
 
                             <div className="text-base whitespace-pre text-xxl font-semibold px-7 ">Instruments</div>
                         </div>
-                        <div className="flex flex-col  h-full px-10">
+                        <div className="flex flex-col  h-full px-5">
                             {open ? <Connect /> : ""}
                             <hr></hr>
                         </div>
-                        <div className="flex flex-col h-full px-10 items-center py-6 overflow-x-hidden scrollbar-thin scrollbar-track-white scrollbar-thumb-slate-100 " >
+                        <div className="flex flex-col h-full px-5 items-center py-6 overflow-x-hidden scrollbar-thin scrollbar-track-white scrollbar-thumb-slate-100 " >
                             {open ? <AttenuationComponent/> : ''}
                         </div>
                     </div>
 
                     {open && (
-                        <div className=" px-10 bottom-20">
+                        <div className=" px-5 bottom-20">
                             <div className="flex gap-2 items-center">
                                 <ToggleButton onToggle={detailhandleToggle} isOn={detailstoggleOn} />
                                 <h>Detailed logs</h>
@@ -143,7 +143,7 @@ const Rightnavbar = ({ detailhandleToggle, detailstoggleOn, infohandleToggle, in
                             }
                     }
                     transition={{ duration: 0 }}
-                    className="absolute w-fit h-fit md:block z-50 hidden right-2 bottom-3 cursor-pointer bg-purple p-2 rounded-full"
+                    className="absolute w-fit h-fit md:block z-50 hidden right-0 ml-2 bottom-3 cursor-pointer bg-purple p-2 rounded-full"
                 >
                     <IoIosArrowBack size={14} className="text-white" />
                 </motion.div>
