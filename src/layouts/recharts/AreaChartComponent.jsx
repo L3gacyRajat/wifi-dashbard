@@ -48,8 +48,8 @@ const AreaChartComponent = () => {
   return (
     <ResponsiveContainer width="100%" height="50%" style={{ paddingTop: "20px" }}>
       <AreaChart
-        width={500}
-        height={400}
+        // width={500}
+        // height={400}
         data={productSales}
         margin={{ right: 30 }}
       >

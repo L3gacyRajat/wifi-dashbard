@@ -13,7 +13,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Dashboard/>} />
         <Route path="/testgen/:dID" element={<Testgen/>} />
-        <Route path="/instruments" element={<Instruments/>}/>
+        {/* <Route path="/instruments" element={<Instruments/>}/> */}
         <Route path="/instrumentswindow" element={<InstrumentsWindow/>}/>
         <Route path="/reportpannel" element={<ReportPannel/>}/>
         <Route path="/adv" element={<Adv/>}/>

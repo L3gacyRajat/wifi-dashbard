@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import Testcase from "./Testcase";
 
-const TestCaseConfiguration = () => {
+const TestCaseConfiguration= () => {
   const [testcases, setTestcases] = useState(["TestCase_1"]);
   const [testcasesCount, setTestcasesCount] = useState(1);
 
@@ -26,6 +26,24 @@ const TestCaseConfiguration = () => {
     }
   };
 
+  const moveTestcaseUp = (index) => {
+    if (index === 0) return; // Cannot move the first test case up
+    const updatedTestcases = [...testcases];
+    const temp = updatedTestcases[index];
+    updatedTestcases[index] = updatedTestcases[index - 1];
+    updatedTestcases[index - 1] = temp;
+    setTestcases(updatedTestcases);
+  };
+
+  const moveTestcaseDown = (index) => {
+    if (index === testcases.length - 1) return; // Cannot move the last test case down
+    const updatedTestcases = [...testcases];
+    const temp = updatedTestcases[index];
+    updatedTestcases[index] = updatedTestcases[index + 1];
+    updatedTestcases[index + 1] = temp;
+    setTestcases(updatedTestcases);
+  };
+
   const handleCreate = () => {
     const inputElement = document.getElementById("testcase");
     const count = parseInt(inputElement.value);
@@ -43,7 +61,7 @@ const TestCaseConfiguration = () => {
 
   return (
     <>
-      <div className="p-2 font-semibold mt-3 mb-3">TestCaseConfiguration </div>
+      <div className="p-2 font-semibold mt-3 mb-3">TestCaseConfiguration</div>
       <div className="flex justify-between">
         <button
           onClick={addNewTestcase}
@@ -72,7 +90,13 @@ const TestCaseConfiguration = () => {
         </div>
       </div>
       {testcases.map((testcaseno, index) => (
-        <Testcase key={index} testcaseno={testcaseno} onDelete={deleteTestcase} />
+        <Testcase
+          key={index}
+          testcaseno={testcaseno}
+          onDelete={deleteTestcase}
+          onMoveUp={() => moveTestcaseUp(index)}
+          onMoveDown={() => moveTestcaseDown(index)}
+        />
       ))}
     </>
   );

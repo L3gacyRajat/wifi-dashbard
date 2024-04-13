@@ -3,9 +3,10 @@ import React from "react";
 import { MdDelete } from "react-icons/md";
 
 const AttenuatorInput = ({ atten,onDelete }) => {
+  const { value, label } = atten;
   return (
     <div className="flex items-center justify-between gap-12 p-4 mt-7 w-full rounded-sm bg-background-color">
-      <div>{atten}</div>
+      <div>{label}</div>
       <div className="flex items-center justify-between flex-grow">
         <div className="flex flex-grow gap-3"> {/* Wrapper div */}
           <input

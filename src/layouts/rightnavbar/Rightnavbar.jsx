@@ -87,11 +87,11 @@ const Rightnavbar = ({ detailhandleToggle, detailstoggleOn, infohandleToggle, in
                 variants={Nav_animation}
                 initial={{ x: isTabletMid ? -250 : 0 }}
                 animate={open ? "open" : "closed"}
-                className=" bg-navbarbg text-textcolor shadow-xl z-[999] max-w-[15rem]  w-[15rem] 
+                className=" bg-navbarbg text-textcolor shadow-xl z-[999] max-w-[16rem]  w-[16rem] 
             overflow-hidden md:relative fixed
          h-full dark:bg-lightbackground dark:text-black "
             >
-                <div className="relative h-full max-w-[14rem] m-[auto]">
+                <div className="relative h-full max-w-[16rem] m-[auto]">
                     <div>
                         <div className="flex items-center gap-1 pt-3 pb-2 overflow-x-hidden scrollbar-thin scrollbar-track-white scrollbar-thumb-slate-100 " >
                             {
@@ -137,7 +137,7 @@ const Rightnavbar = ({ detailhandleToggle, detailstoggleOn, infohandleToggle, in
                                 rotate: 180,
                             }
                             : {
-                                x: 0,
+                                x: -20,
                                 y: 0,
                                 rotate: 0,
                             }

@@ -2,7 +2,7 @@ import { useParams} from "react-router-dom";
 import React, { useState } from "react";
 import Selector from '../layouts/Selector';
 import ManagementConfiguration from "./testgen/ManagementConfiguration";
-import TestCaseConfiguration from "./testgen/TestCaseConfiguration ";
+import TestCaseConfiguration from "./testgen/TestCaseConfiguration";
 import DUTConfiguration from "./testgen/DUTConfiguration";
 
 import Quickrun from "../layouts/QuickRunExecution/Quickrun";
@@ -25,7 +25,7 @@ const Testgen = () => {
       <Selector data={data} onSelect={setSelectedOption} dropdownname="Configure" width="w-72"/>
       {selectedOption === "Management Configuration" && <ManagementConfiguration />}
       {selectedOption === "DUT Configuration" && <DUTConfiguration />}
-      {selectedOption === "Test Case Configuration" && <TestCaseConfiguration />}
+      {selectedOption === "Test Case Configuration" && <TestCaseConfiguration/>}
       </div>
       }
     </>

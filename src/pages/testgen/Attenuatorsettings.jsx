@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from "react";
 import AttenuatorInput from "./AttenuatorInput";
+import Select from 'react-select';
 
 const AttenuatorSettings = () => {
   const [selectedAtten, setSelectedAtten] = useState([]);
   const [attenCount, setAttenCount] = useState(1);
+
+  const handleChange = (selectedOptions) => {
+    setSelectedAtten(selectedOptions);
+  };
+
+  //dropdown data
+  const options = [
+    { value: 'Atten_01', label: 'Atten_01' },
+    { value: 'Atten_02', label: 'Atten_02' },
+    { value: 'Atten_03', label: 'Atten_03' }
+  ];
 
   // Load selected attenuators from local storage on component mount
   useEffect(() => {
@@ -25,10 +37,12 @@ const AttenuatorSettings = () => {
   const deleteAtten = (attenToDelete) => {
     const updatedAtten = selectedAtten.filter(atten => atten !== attenToDelete);
     setSelectedAtten(updatedAtten);
+
     // No need to update local storage here, it will be updated in the useEffect
-    const lastTestcase = updatedAttenu[updatedAtten.length - 1];
-    if (lastTestcase) {
-      const count = parseInt(lastTestcase.split("_")[1]);
+
+    const lastAtten = updatedAtAtten[updatedAtAtten.length - 1];
+    if (lastAtten) {
+      const count = parseInt(lastAtten.value.split("_")[1]);
       setAttenCount(count);
     } else {
       setAttenCount(0);
@@ -37,24 +51,17 @@ const AttenuatorSettings = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-normal">
-        Select Attenuators:
-        <button 
-          className={`rounded-md border  px-3 py-2 mr-2 ml-3 ${selectedAtten.includes('Atten_01') ? 'border-purple' : 'border-textcolor'}`}
-          onClick={() => handleAttenClick('Atten_01')}
-        >
-          Atten_01
-        </button>
-        <button 
-          className={`rounded-md border px-3 py-2 mr-2 ml-3 ${selectedAtten.includes('Atten_02') ? 'border-purple' : 'border-textcolor'}`}
-          onClick={() => handleAttenClick('Atten_02')}
-        >
-          Atten_02
-        </button>
+      <div className="flex flex-col items-center justify-center mt-5 ">
+        <div className='grid grid-cols-2 gap-3'>
+          <div className='font-semibold ml-6 flex items-center justify-center '>Select STA's:</div>
+          <Select options={options} value={selectedAtten} onChange={handleChange} isMulti={true} placeholder={"Select STA's..."} className='text-black' />
+        </div>
       </div>
+
       {selectedAtten.map((atten, index) => (
         <div key={index} className="flex items-center">
-          <AttenuatorInput atten={atten} onDelete={deleteAtten}/>
+          {/* Render the selected attenuator inputs */}
+          <AttenuatorInput atten={atten} onDelete={deleteAtten} />
         </div>
       ))}
     </div>
