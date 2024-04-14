@@ -1,9 +1,16 @@
 // AttenuatorInput.jsx
-import React from "react";
+import React, {useState} from "react";
+import ChannelBox from "./ChannelBox";
 import { MdDelete } from "react-icons/md";
 
 const AttenuatorInput = ({ atten,onDelete }) => {
   const { value, label } = atten;
+  const [openchannel, setOpenChannel] = useState(false);
+  // make a function to open channel as popup
+  const handleopenchannel = () =>{
+    setOpenChannel(true);
+    console.log("Channel button clicked");
+  }
   return (
     <div className="flex items-center justify-between gap-12 p-4 mt-7 w-full rounded-sm bg-background-color">
       <div>{label}</div>
@@ -49,9 +56,12 @@ const AttenuatorInput = ({ atten,onDelete }) => {
             // Adjusted width
           />
         </div>
-        <button className="border border-purple rounded-md px-3 py-2 ml-2">Channel</button>
+        <button className="border border-purple rounded-md px-3 py-2 ml-2" onClick={handleopenchannel}>Channel</button>
         <MdDelete className="text-[40px] px-2 py-1 " onClick={() => { console.log("Delete button clicked"); onDelete(atten); }} />
-
+        {openchannel && <div className="absolute bg-[#081028]">
+          {/* pass onClose as a prop in channel box*/}
+          <ChannelBox onClose={() => setOpenChannel(false)} />
+        </div>}
       </div>
     </div>
   );

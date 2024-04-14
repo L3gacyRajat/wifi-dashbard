@@ -53,8 +53,8 @@ const AttenuatorSettings = () => {
     <div>
       <div className="flex flex-col items-center justify-center mt-5 ">
         <div className='grid grid-cols-2 gap-3'>
-          <div className='font-semibold ml-6 flex items-center justify-center '>Select STA's:</div>
-          <Select options={options} value={selectedAtten} onChange={handleChange} isMulti={true} placeholder={"Select STA's..."} className='text-black' />
+          <div className='font-semibold ml-6 flex items-center justify-center '>Select Attenuators:</div>
+          <Select options={options} value={selectedAtten} onChange={handleChange} isMulti={true} placeholder={"Select Atten..."} className='text-black' />
         </div>
       </div>
 

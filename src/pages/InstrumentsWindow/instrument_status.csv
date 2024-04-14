@@ -1,0 +1,27 @@
+Instrument Type,Instrument Name,IP Address,port,Firmware version,Status,Reset
+Attenuator,Atten1,10.10.10.10,,fw1,inactive,Reboot
+Attenuator,Atten2,1.1.1.1,,fw1,active,Reboot
+Attenuator,Atten3,1.1.1.1,,fw1,active,Reboot
+Attenuator,atten4,1.1.1.1,,fw1,active,Reboot
+Attenuator,Atten5,1.1.1.1,,fw1,active,Reboot
+NX-BE,NX-BE1,1.1.1.1,5101,V1,active,Reboot
+NX-BE,NX-BE2,1.1.1.1,5201,fw2,active,Reboot
+NX-BE,NX-BE3,1.1.1.1,5301,fw2,active,Reboot
+NX-BE,NX-BE4,1.1.1.1,5001,fw2,active,Reboot
+NX-C,NX-C1,1.1.1.1,5401,V2,active,Reboot
+NX-C,NX-C2,1.1.1.1,5501,V2,active,Reboot
+NX-C,NX-C3,1.1.1.1,5601,V2,active,Reboot
+NX-C,NX-C4,1.1.1.1,5701,V2,active,Reboot
+NX-C,NX-C5,1.1.1.1,5801,V2,active,Reboot
+NX-C,NX-C6,1.1.1.1,5901,V2,active,Reboot
+NX-C,NX-C7,1.1.1.1,6001,V2,active,Reboot
+NX-C,NX-C8,1.1.1.1,6101,V2,active,Reboot
+NX-C,NX-C9,1.1.1.1,6101,V2,active,Reboot
+NX-C,NX-C10,1.1.1.1,6101,V2,active,Reboot
+NX-C,NX-C11,1.1.1.1,6101,V2,active,Reboot
+NX-C,NX-C12,1.1.1.1,6101,V2,active,Reboot
+NX-C,NX-C13,1.1.1.1,6101,V2,active,Reboot
+NX-C,NX-C14,1.1.1.1,6101,V2,active,Reboot
+NX-C,NX-C15,1.1.1.1,6101,V2,active,Reboot
+NX-C,NX-C16,1.1.1.1,6101,V2,active,Reboot
+Turntable,table1,1.1.1.1,,fw1,active,Reboot
