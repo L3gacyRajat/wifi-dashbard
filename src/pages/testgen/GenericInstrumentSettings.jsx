@@ -2,52 +2,38 @@ import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import Dropdown from './Dropdown';
 import Stas from './Stas';
+import { readRemoteFile } from 'react-papaparse';
 
 const GenericInstrumentSettings = ({ sta }) => {
   const [selectedStas, setSelectedStas] = useState([]);
-  const [staCount, setStaCount] = useState(1);
-  const [checkedStas, setCheckedStas] = useState([]);
-
-  // Update checked STAs when selected STAs change
-  useEffect(() => {
-    const selectedStaValues = selectedStas.map(option => option.value);
-    setCheckedStas(checkedStas.filter(sta => selectedStaValues.includes(sta)));
-  }, [selectedStas]);
-
-  const handleStaClick = (sta) => {
-    setSelectedStas([...selectedStas, sta]);
-  };
+  const [options, setOptions] = useState([]);
 
   const handleChange = (selectedOptions) => {
     setSelectedStas(selectedOptions);
   };
 
-  const handleCheckboxChange = (event) => {
-    const { checked, value } = event.target;
-    if (checked) {
-      setCheckedStas([...checkedStas, value]);
-    } else {
-      setCheckedStas(checkedStas.filter((sta) => sta !== value));
-    }
-  };
 
-  const handleCheckAll = (event) => {
-    const { checked } = event.target;
-    if (checked) {
-      setSelectedStas(options); // Select all options
-      setCheckedStas(options.map(option => option.value)); // Check all options
-    } else {
-      setSelectedStas([]); // Deselect all options
-      setCheckedStas([]); // Uncheck all options
-    }
-    
-  };
+  useEffect(() => {
+    const loadOptions = () => {
+      readRemoteFile('/src/assets/instrument_status.csv', {
+        complete: (results) => {
+          const filteredSta = results.data.slice(0)
+            .map((row, index) => ({
+              value: `Atten_${index + 1}`,
+              label: row['Instrument Name']
+            }));
+          setOptions(filteredSta);
+        },
+        header: true
+      });
+    };
 
-  const options = [
-    { value: 'STA_01', label: 'STA_01' },
-    { value: 'STA_02', label: 'STA_02' },
-    { value: 'STA_03', label: 'STA_03' }
-  ];
+    loadOptions();
+    const savedSelectedSta = localStorage.getItem("selectedSta");
+    if (savedSelectedSta) {
+      setSelectedStas(JSON.parse(savedSelectedSta));
+    }
+  }, [options]);
 
   //dropdowns data
   const dropdown = [
@@ -60,44 +46,29 @@ const GenericInstrumentSettings = ({ sta }) => {
       id: 2,
       title: "Standr",
       items: ['11ax', '11ax', '11ax', '11ax', '11ax']
-    }
-    ,
+    },
     {
       id: 3,
       title: "Bandwidth",
       items: ['80', '80', '80', '80', '80']
-    }
-    ,
+    },
     {
       id: 4,
-      title: "Nss",
+      title: "Channel",
       items: ['2', '2', '2', '2', '2']
-    }
-    ,
+    },
     {
       id: 5,
-      title: "Gaurd",
-      items: ['800', '800', '800', '800', '800']
-    }
-    ,
-    {
-      id: 6,
-      title: "Test",
-      items: ['Tcp', 'Tcp', 'Tcp', 'Tcp', 'Tcp']
-    }
-    ,
-    {
-      id: 7,
-      title: "Test",
-      items: ['120', '120', '120', '120', '120']
-    }
+      title: "Nss",
+      items: ['2', '2', '2', '2', '2']
+    },
   ];
-  
+
   return (
     <div className="flex flex-col items-center justify-center mt-5 ">
       <div className='grid grid-cols-2 gap-3'>
-        <div className='font-semibold ml-6 flex items-center justify-center '>Select STA's:</div>
-        <Select options={options} value={selectedStas} onChange={handleChange} isMulti={true} placeholder={"Select STA's..."} className='text-black' />
+        <div className='font-semibold ml-6 flex items-center justify-center '>Select Instruments</div>
+        <Select options={options} value={selectedStas} onChange={handleChange} isMulti={true} placeholder={"Select Instruments"} className='text-black' />
       </div>
       <div className="p-2">
         <div className='flex justify-between items-center text-purple-500 bg-[#0B1739] border-[#343B4F] border rounded-md m-2 p-2'>
@@ -111,13 +82,13 @@ const GenericInstrumentSettings = ({ sta }) => {
 
       <div className='w-full h-[200px] bg-white border-black flex gap-3 rounded-md text-black p-5 position-relative' >
         {/* checkall */}
-        <div style={{ position: 'absolute', top: '320px', right: '60px' }}>
+        <div style={{ position: 'absolute', top: '320px', right: '60px'}}>
           <input
             type="checkbox"
             id="checkAll"
-            onChange={handleCheckAll}
             checked={selectedStas.length === options.length && options.length > 0}
             className="form-checkbox h-4 w-4 bg-white"
+            disabled={true}
           />
           <label htmlFor="checkAll">Check All</label>
         </div>
@@ -127,8 +98,6 @@ const GenericInstrumentSettings = ({ sta }) => {
               type="checkbox"
               id={option.value}
               value={option.value}
-              onChange={handleCheckboxChange}
-              checked={checkedStas.includes(option.value)}
               className="form-checkbox h-4 w-4 bg-white"
             />
             <label htmlFor={option.value}>{option.label}</label>
@@ -137,8 +106,8 @@ const GenericInstrumentSettings = ({ sta }) => {
       </div>
 
       {/* Display selected STAs */}
-      {checkedStas.map((staName, index) => (
-        <Stas key={index} name={staName} />
+      {selectedStas.map((sta, index) => (
+        <Stas key={index} name={sta.label} />
       ))}
     </div>
   );

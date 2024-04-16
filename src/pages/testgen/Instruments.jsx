@@ -22,13 +22,6 @@ const Instruments = ({ onClose }) => {
   const [selectedOption, setSelectedOption] = useState(null);
 
 
-
-  const variants = {
-    open: { opacity: 1, height: 'auto', marginTop: '0.5rem' },
-    closed: { opacity: 0, height: 0, marginTop: 0 },
-  };
-
-
   return (
     <>
       <div className=' flex justify-center items-center z-50 '>
