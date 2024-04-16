@@ -1,26 +1,13 @@
 import { useParams } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Selector from "../../layouts/Selector";
-import Attenuatorsettings from "./Attenuatorsettings"
-import SnifferSettings from "./SnifferSettings"
-import GenericInstrumentSettings from "./GenericInstrumentSettings"
-import TurnTableSettings from "./TurnTableSettings"
 import 'react-toastify/dist/ReactToastify.css';
 import { RxCross2 } from "react-icons/rx";
 import Select from 'react-select'
 import Search from "../searchcomponent/Search";
 import ToggleButton from "../../layouts/rightnavbar/ToggleButton";
+import { readRemoteFile } from 'react-papaparse';
 
-
-
-
-
-const data = [
-    "Attenuator Settings",
-    "TurnTable settings ",
-    "Generic Instuments Settings",
-    "Sniffer Settings",
-];
 
 const options = [
     { value: 'OpenSystem', label: 'OpenSystem' },
@@ -29,16 +16,55 @@ const options = [
 ];
 
 const InstrumentsSettings = ({ onClose }) => {
-    const { dID } = useParams();
-    const [selectedOption, setSelectedOption] = useState(null);
-    const [value, setValue] = useState("");
 
+    const [interfaceOptions, setInterfaceOptions] = useState([]);
+    const [channelOptions, setChannelOptions] = useState([]);
+    const [selectedInterface, setSelectedInterface] = useState('');
+    const [selectedChannel, setSelectedChannel] = useState('');
+    const [selectedChannelData, setSelectedChannelData] = useState({});
 
+  useEffect(() => {
+    // Load interface options
+    readRemoteFile('/src/assets/Freq_MCS_BW/Interfaces.csv', {
+      complete: (results) => {
+        const interfaces = results.data.map((row) => ({ value: row[0], label: row[0] }));
+        setInterfaceOptions(interfaces);
+      },
+    });
+  }, []);
 
-    const variants = {
-        open: { opacity: 1, height: 'auto', marginTop: '0.5rem' },
-        closed: { opacity: 0, height: 0, marginTop: 0 },
-    };
+  const handleInterfaceChange = (selectedOption) => {
+    setSelectedInterface(selectedOption);
+    // Load channel options based on selected interface
+    readRemoteFile(`/src/assets/Freq_MCS_BW/${selectedOption.value}.csv`, {
+      complete: (results) => {
+        const channels = results.data.slice(1).map((row, index) => {
+            // Check if row has the expected number of columns
+            if (row.length >= 4) {
+              return {
+                value: row[0],
+                label: row[0],
+                bandwidth: row[1].split('/'),
+                mcs: row[2].split('/'),
+                guardInterval: row[3].split('/'),
+              };
+            } else {
+              // Handle rows with incorrect format
+              console.error(`Row ${index + 1} has incorrect format`);
+              return null; // Or handle the error in another appropriate way
+            }
+          }).filter(Boolean); // Remove any null values from the array          
+        setChannelOptions(channels);
+      },
+    });
+  };
+
+  const handleChannelChange = (selectedOption) => {
+    setSelectedChannel(selectedOption);
+    const channelData = selectedOption;
+    setSelectedChannelData(channelData);
+  };
+
 
 
     return (
@@ -155,18 +181,40 @@ const InstrumentsSettings = ({ onClose }) => {
                             </div>
                             <div className="grid grid-cols-2 gap-1 flex items-center">
                                 <label htmlFor="Traffic-ip">Interface:</label>
-                                <Select options={options} placeholder={"Enter interface"} className='text-black' />
+                                <Select options={interfaceOptions} value={selectedInterface} onChange={handleInterfaceChange} placeholder="Select interface" className='text-black' />
                                 <label htmlFor="Net-Mask">NSS:</label>
                                 <Select options={options} placeholder={"Enter nss"} className='text-black' />
-                                <label htmlFor="security">Bandwidth:</label>
-                                <Select options={options} placeholder={"Enter bandwith"} className='text-black' />
+                                <label htmlFor="password">Bandwidth:</label>
+                                <Select
+  options={selectedChannelData && selectedChannelData.bandwidth ? selectedChannelData.bandwidth.map(bw => ({ value: bw, label: bw })) : []}
+  placeholder="Select bandwidth"
+  className='text-black'
+  isDisabled={!selectedChannelData || !selectedChannelData.bandwidth}
+/>
 
                                 <label htmlFor="password">Primary Channel:</label>
-                                <Select options={options} placeholder={"Enter primarychannel"} className='text-black' />
-                                <label htmlFor="password">Mcs:</label>
-                                <Select options={options} placeholder={"Enter mcs"} className='text-black' />
+                                <Select
+          options={channelOptions}
+          value={selectedChannel}
+          onChange={handleChannelChange}
+          placeholder="Select channel"
+          className='text-black'
+          isDisabled={!selectedInterface}
+        />
+                                <label htmlFor="password">MCS:</label>
+                                <Select
+  options={selectedChannelData && selectedChannelData.mcs ? selectedChannelData.mcs.map(mcs => ({ value: mcs, label: mcs })) : []}
+  placeholder="Select MCS"
+  className='text-black'
+  isDisabled={!selectedChannelData || !selectedChannelData.mcs}
+/>
                                 <label htmlFor="password">Guard interval:</label>
-                                <Select options={options} placeholder={"Enter guardinterval"} className='text-black' />
+                                <Select
+  options={selectedChannelData && selectedChannelData.guardInterval ? selectedChannelData.guardInterval.map(gi => ({ value: gi, label: gi })) : []}
+  placeholder="Select guard interval"
+  className='text-black'
+  isDisabled={!selectedChannelData || !selectedChannelData.guardInterval}
+/>
                             </div>
                         </div>
                         {/* advance */}
