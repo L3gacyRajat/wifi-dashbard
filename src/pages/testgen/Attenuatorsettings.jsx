@@ -1,38 +1,42 @@
 import React, { useState, useEffect } from "react";
 import AttenuatorInput from "./AttenuatorInput";
 import Select from 'react-select';
+import { readRemoteFile } from 'react-papaparse';
 
 const AttenuatorSettings = () => {
   const [selectedAtten, setSelectedAtten] = useState([]);
+  const [options, setOptions] = useState([]);
   const [attenCount, setAttenCount] = useState(1);
 
   const handleChange = (selectedOptions) => {
     setSelectedAtten(selectedOptions);
   };
 
-  //dropdown data
-  const options = [
-    { value: 'Atten_01', label: 'Atten_01' },
-    { value: 'Atten_02', label: 'Atten_02' },
-    { value: 'Atten_03', label: 'Atten_03' }
-  ];
-
-  // Load selected attenuators from local storage on component mount
   useEffect(() => {
+    const loadOptions = () => {
+      readRemoteFile('/src/assets/Attenuator_status.csv', {
+        complete: (results) => {
+          const filteredAtten = results.data.slice(0)
+            .map((row, index) => ({
+              value: `Atten_${index + 1}`,
+              label: row['Attenuator Name']
+            }));
+          setOptions(filteredAtten);
+        },
+        header: true
+      });
+    };
+
+    loadOptions();
     const savedSelectedAtten = localStorage.getItem("selectedAtten");
     if (savedSelectedAtten) {
       setSelectedAtten(JSON.parse(savedSelectedAtten));
     }
-  }, []); // Empty dependency array to run only once after initial mount
+  }, [options]);
 
-  // Update local storage whenever selected attenuators change
   useEffect(() => {
     localStorage.setItem("selectedAtten", JSON.stringify(selectedAtten));
-  }, [selectedAtten]); // Dependency array ensures it runs whenever selectedAtten changes
-
-  const handleAttenClick = (atten) => {
-    setSelectedAtten([...selectedAtten, atten]);
-  };
+  }, [selectedAtten]);
 
   const deleteAtten = (attenToDelete) => {
     const updatedAtten = selectedAtten.filter(atten => atten !== attenToDelete);
@@ -40,28 +44,31 @@ const AttenuatorSettings = () => {
 
     // No need to update local storage here, it will be updated in the useEffect
 
-    const lastAtten = updatedAtAtten[updatedAtAtten.length - 1];
+    const lastAtten = updatedAtten[updatedAtten.length - 1];
     if (lastAtten) {
       const count = parseInt(lastAtten.value.split("_")[1]);
       setAttenCount(count);
     } else {
       setAttenCount(0);
     }
-  };
+  }
 
   return (
-    <div>
-      <div className="flex flex-col items-center justify-center mt-5 ">
-        <div className='grid grid-cols-2 gap-3'>
-          <div className='font-semibold ml-6 flex items-center justify-center '>Select Attenuators:</div>
-          <Select options={options} value={selectedAtten} onChange={handleChange} isMulti={true} placeholder={"Select Atten..."} className='text-black' />
-        </div>
+    <div className="flex flex-col items-center justify-center mt-5">
+      <div className='grid grid-cols-2 gap-3'>
+        <div className='font-semibold ml-6 flex items-center justify-center '>Select Attenuators:</div>
+        <Select
+          options={options}
+          value={selectedAtten}
+          onChange={handleChange}
+          isMulti={true}
+          placeholder={"Select Atten..."}
+          className='text-black'
+        />
       </div>
-
       {selectedAtten.map((atten, index) => (
         <div key={index} className="flex items-center">
-          {/* Render the selected attenuator inputs */}
-          <AttenuatorInput atten={atten} onDelete={deleteAtten} />
+          <AttenuatorInput atten={atten} onDelete={() => deleteAtten(atten)} />
         </div>
       ))}
     </div>

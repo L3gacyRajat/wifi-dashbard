@@ -1,9 +1,4 @@
 Instrument Type,Instrument Name,IP Address,port,Firmware version,Status,Reset
-Attenuator,Atten1,10.10.10.10,,fw1,inactive,Reboot
-Attenuator,Atten2,1.1.1.1,,fw1,active,Reboot
-Attenuator,Atten3,1.1.1.1,,fw1,active,Reboot
-Attenuator,atten4,1.1.1.1,,fw1,active,Reboot
-Attenuator,Atten5,1.1.1.1,,fw1,active,Reboot
 NX-BE,NX-BE1,1.1.1.1,5101,V1,active,Reboot
 NX-BE,NX-BE2,1.1.1.1,5201,fw2,active,Reboot
 NX-BE,NX-BE3,1.1.1.1,5301,fw2,active,Reboot

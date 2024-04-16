@@ -8,9 +8,9 @@ const InstrumentTable = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      readRemoteFile('src/pages/InstrumentsWindow/instrument_status.csv', {
+      readRemoteFile('src/assets/instrument_status.csv', {
         complete: (parsed) => {
-          const modifiedData = parsed.data.slice(1).map(row => ({ 
+          const modifiedData = parsed.data.slice(1).map(row => ({   // skip the first rows (Header) of the CSV file
             instrumentType: row[0],
             instrumentName: row[1],
             ipAddress: row[2],

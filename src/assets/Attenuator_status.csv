@@ -1,0 +1,6 @@
+Attenuator Type,Attenuator Name,IP Address,Firmware version,Status,Reset
+Attenuator,Atten1,10.10.10.10,fw1,inactive,Reboot
+Attenuator,Atten2,1.1.1.1,fw1,active,Reboot
+Attenuator,Atten3,1.1.1.1,fw1,active,Reboot
+Attenuator,atten4,1.1.1.1,fw1,active,Reboot
+Attenuator,Atten5,1.1.1.1,fw1,active,Reboot
