@@ -22,16 +22,44 @@ const InstrumentsSettings = ({ onClose }) => {
     const [selectedInterface, setSelectedInterface] = useState('');
     const [selectedChannel, setSelectedChannel] = useState('');
     const [selectedChannelData, setSelectedChannelData] = useState({});
+    const [selectedRadioValue, setSelectedRadioValue] = useState('');
 
-  useEffect(() => {
-    // Load interface options
-    readRemoteFile('/src/assets/Freq_MCS_BW/Interfaces.csv', {
-      complete: (results) => {
-        const interfaces = results.data.map((row) => ({ value: row[0], label: row[0] }));
-        setInterfaceOptions(interfaces);
-      },
-    });
-  }, []);
+    useEffect(() => {
+        // Load interface options
+        readRemoteFile('/src/assets/Freq_MCS_BW/Interfaces.csv', {
+            complete: (results) => {
+                const interfaces = results.data.map((row) => ({ value: row[0], label: row[0] }));
+    
+                // Filter interfaces based on the selected radio button value
+                const filteredInterfaces = interfaces.filter(option => {
+                    if (selectedRadioValue === "option1") {
+                        return option.label.endsWith("_2.4");
+                    } else if (selectedRadioValue === "option2") {
+                        return option.label.endsWith("_5");
+                    } else if (selectedRadioValue === "option3") {
+                        return option.label.endsWith("_6");
+                    } else {
+                        return true; // If no radio button is selected, show all interfaces
+                    }
+                }).map(option => ({
+                    ...option,
+                    label: option.label.replace(/_(2\.4|5|6|2)$/, '') // Remove "_2.4" or "_5" suffix from label
+                }));
+                // now remove radio button value from the dependency array
+                setInterfaceOptions(filteredInterfaces);
+                console.log(filteredInterfaces);
+            },
+        });
+    }, [selectedRadioValue]); // Add selectedRadioValue as a dependency
+    
+
+    const handleRadioChange = (event) => {
+        setSelectedRadioValue(event.target.value); // Update the selected radio button value
+        setSelectedInterface(''); // Clear the selected interface
+        setSelectedChannel(''); // Clear the selected channel
+        setSelectedChannelData({}); // Clear the selected channel data
+    };
+    
 
   const handleInterfaceChange = (selectedOption) => {
     setSelectedInterface(selectedOption);
@@ -54,10 +82,13 @@ const InstrumentsSettings = ({ onClose }) => {
               return null; // Or handle the error in another appropriate way
             }
           }).filter(Boolean); // Remove any null values from the array          
+
         setChannelOptions(channels);
-      },
-    });
-  };
+            },
+        });
+    };
+    
+
 
   const handleChannelChange = (selectedOption) => {
     setSelectedChannel(selectedOption);
@@ -117,19 +148,19 @@ const InstrumentsSettings = ({ onClose }) => {
                         </div>
                         {/* radio buttons */}
                         <div className="flex justify-center items-center space-x-4 p-3">
-                            <label className="inline-flex items-center">
-                                <input type="radio" className="form-radio text-blue-500" name="radio" value="option1" />
-                                <span className="ml-2">2.4GHZ</span>
-                            </label>
-                            <label className="inline-flex items-center">
-                                <input type="radio" className="form-radio text-blue-500" name="radio" value="option2" />
-                                <span className="ml-2">4GHZ</span>
-                            </label>
-                            <label className="inline-flex items-center">
-                                <input type="radio" className="form-radio text-blue-500" name="radio" value="option3" />
-                                <span className="ml-2">5GHZ</span>
-                            </label>
-                        </div>
+            <label className="inline-flex items-center">
+                <input type="radio" className="form-radio text-blue-500" name="radio" value="option1" onChange={handleRadioChange} />
+                <span className="ml-2">2.4GHz</span>
+            </label>
+            <label className="inline-flex items-center">
+                <input type="radio" className="form-radio text-blue-500" name="radio" value="option2" onChange={handleRadioChange} />
+                <span className="ml-2">5GHz</span>
+            </label>
+            <label className="inline-flex items-center">
+                <input type="radio" className="form-radio text-blue-500" name="radio" value="option3" onChange={handleRadioChange} />
+                <span className="ml-2">6GHz</span>
+            </label>
+        </div>
 
                         {/* main */}
                         <div className="">
@@ -181,6 +212,7 @@ const InstrumentsSettings = ({ onClose }) => {
                             </div>
                             <div className="grid grid-cols-2 gap-1 flex items-center">
                                 <label htmlFor="Traffic-ip">Interface:</label>
+                                {/* <Select options={filteredInterfaces} value={selectedInterface} onChange={handleInterfaceChange} placeholder="Select interface" className='text-black' /> */}
                                 <Select options={interfaceOptions} value={selectedInterface} onChange={handleInterfaceChange} placeholder="Select interface" className='text-black' />
                                 <label htmlFor="Net-Mask">NSS:</label>
                                 <Select options={options} placeholder={"Enter nss"} className='text-black' />

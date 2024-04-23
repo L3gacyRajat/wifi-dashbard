@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Selector from "../../layouts/Selector";
-
 import { Bounce, ToastContainer, toast } from "react-toastify";
+import axios from "axios"; // Import axios for making HTTP requests
 
 const apidOptions = ["AP_01", "AP_02", "AP_03"];
 const bandOptions = ["3G", "4G", "5G"];
@@ -12,6 +12,7 @@ const DUTConfiguration = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [numberOfDUTs, setNumberOfDUTs] = useState(0);
   const [dutNames, setDutNames] = useState([]);
+  const [isCreated, setIsCreated] = useState(false);
   const [ap, setAP] = useState("");
   const [apid, setAPID] = useState("");
   const [band, setBand] = useState("");
@@ -19,49 +20,60 @@ const DUTConfiguration = () => {
   const [pass, setPass] = useState("");
   const [security, setSecurity] = useState("");
 
-  // Function to save configuration data to localStorage
+  useEffect(() => {
+    // Fetch DUT names from the server when the component mounts
+    axios.get("http://localhost:5000/configurations")
+      .then(response => {
+        setDutNames(Object.keys(response.data));
+      })
+      .catch(error => {
+        console.error("Error fetching DUT names:", error);
+      });
+  }, []);
+
+  // Function to save configuration data to the server
   const saveConfigurationData = () => {
     const dutData = {
-      ap,
-      apid,
-      band,
-      ssid,
-      pass,
-      security
+      dutName: selectedOption,
+      configuration: {
+        ap,
+        apid,
+        band,
+        ssid,
+        pass,
+        security
+      }
     };
-    localStorage.setItem(selectedOption, JSON.stringify(dutData));
-    notify();
+    axios.post("http://localhost:5000/configurations", dutData)
+      .then(() => {
+        notify();
+      })
+      .catch(error => {
+        console.error("Error saving configuration:", error);
+        notify.Error("Failed to save configuration. Please try again later.");
+      });
   };
+  
 
-  // Function to load configuration data from localStorage
+  // Function to load configuration data from the server
   const loadConfigurationData = (dutName) => {
-    const savedData = localStorage.getItem(dutName);
-    if (savedData) {
-      const {
-        ap: savedAP,
-        apid: savedAPID,
-        band: savedBand,
-        ssid: savedSSID,
-        pass: savedPass,
-        security: savedSecurity
-      } = JSON.parse(savedData);
-      setAP(savedAP);
-      setAPID(savedAPID);
-      setBand(savedBand);
-      setSSID(savedSSID);
-      setPass(savedPass);
-      setSecurity(savedSecurity);
-
-    } else {
-      // Clear the state if no saved data found
-      setAP("");
-      setAPID("");
-      setBand("");
-      setSSID("");
-      setPass("");
-      setSecurity("");
-    }
+    axios.get(`http://localhost:5000/configurations/${dutName}`)
+      .then(response => {
+        const configuration = response.data;
+        setAP(configuration.ap || "");
+        setAPID(configuration.apid || "");
+        setBand(configuration.band || "");
+        setSSID(configuration.ssid || "");
+        setPass(configuration.pass || "");
+        setSecurity(configuration.security || "");
+      })
+      .catch(error => {
+        console.error(`Error loading configuration for ${dutName}:`, error);
+        notify.Error("Failed to load configuration. Please try again later.");
+        // Optionally, you can handle error cases here, such as displaying an error message to the user
+      });
   };
+  
 
   const handleCreateDUTs = () => {
     if (numberOfDUTs > 0) {
@@ -70,6 +82,7 @@ const DUTConfiguration = () => {
         (_, index) => `DUT_${index + 1}`
       );
       setDutNames(newDutNames);
+      setIsCreated(true);
     }
   };
 
@@ -94,6 +107,7 @@ const DUTConfiguration = () => {
           onSelect={handleSelectDUT}
           dropdownname="DUT"
           width="w-72"
+          
         />
         <div>
           <input
@@ -116,7 +130,7 @@ const DUTConfiguration = () => {
           </button>
         </div>
       </div>
-      <div className="flex justify-center items-center p-10">
+      {(isCreated) && <div className="flex justify-center items-center p-10">
         <div className="grid grid-cols-2 gap-1">
           <label htmlFor="ap">AP:</label>
           <input
@@ -192,7 +206,7 @@ const DUTConfiguration = () => {
             pauseOnHover/>
           </div>
         </div>
-      </div>
+      </div>}
     </>
   );
 };
