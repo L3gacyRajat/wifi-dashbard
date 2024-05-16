@@ -31,8 +31,9 @@ const SubMenu = ({ data }) => {
         className="flex h-0 flex-col text-[0.8rem] font-normal overflow-hidden"
       >
         {data.menus?.map((menu) => (
-          <li key={menu}
-           className="hover:bg-lightpurple dark:hover:bg-[#FFFFFF] rounded-md hover:border-l-4 hover:border-purple pl-12 "
+          <li
+            key={menu}
+            className="hover:bg-lightpurple dark:hover:bg-[#FFFFFF] rounded-md  hover:border-purple pl-11 "
           >
             <NavLink
               to={`/${data.name}/${menu}`}

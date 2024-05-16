@@ -1,0 +1,27 @@
+.check1{
+    @media screen and (max-width: 432px) {
+        display: flex !important;
+        flex-direction: column;
+    }
+}
+
+.check{
+    @media screen and (max-width: 432px) {
+        display: none !important;
+    }
+}
+
+.check2{
+    @media screen and (max-width: 432px) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
+.check3{
+    @media screen and (max-width: 432px) {
+        align-items: baseline !important;
+    }
+}
+

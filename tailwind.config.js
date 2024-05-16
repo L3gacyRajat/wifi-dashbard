@@ -16,7 +16,9 @@ export default {
         'graphbg':'#0B1739',
         'lightbackground':"#F2F4F6",
         'lighttextcolor':"#2D3748",
-        'whit':"#FFFFFF"
+        'whit':"#FFFFFF",
+        'bordercolor':"#F8F9FC",
+        'lightmodebg':"#F4F7FE"
 
       },
      fontFamily: {

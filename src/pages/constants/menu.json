@@ -1,0 +1,715 @@
+[
+  {
+    "title": "Band",
+    "main":"Band:",
+    "childrens": [
+      {
+        "title": "2.4GHz",
+        "childrens": [
+          {
+            "title": "2412 MHz [1]",
+            "path": "/Canon-DSLR"
+          },
+          {
+            "title": "2417 MHz [2] ",
+            "path": "/Nekon-DSLR"
+          },
+          {
+            "title": "2422 MHz [3]  ",
+            "path": "/Camera-Lens"
+          },
+          {
+            "title": "2427 MHz [4] ",
+            "path": "/Camera-Lens"
+          },
+          {
+            "title": "2432 MHz [5]  ",
+            "path": "/Camera-Lens"
+          },
+          {
+            "title": " 2437 MHz [6]  ",
+            "path": "/Camera-Lens"
+          },
+          {
+            "title": " 2442 MHz [7]  ",
+            "path": "/Camera-Lens"
+          },
+          {
+            "title": "2447 MHz [8]  ",
+            "path": "/Camera-Lens"
+          },
+          {
+            "title": " 2452 MHz [9]",
+            "path": "/Camera-Lens"
+          },
+          {
+            "title": "2457 MHz [10] ",
+            "path": "/Camera-Lens"
+          },
+          {
+            "title": "2462 MHz [11] ",
+            "path": "/Camera-Lens"
+          }
+        ]
+      },
+      {
+        "title": "5GHz ",
+        "childrens": [
+          {
+            "title": "5180 MHz [36] ",
+            "path": "/Canon-DSLR"
+          },
+          {
+            "title": "5200 MHz [40] ",
+            "path": "/hi"
+          }
+          ,
+          {
+            "title": " 5220 MHz [44] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5240 MHz [48] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5260 MHz [52] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5280 MHz [56] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5300 MHz [60] ",
+            "path": "/hi"
+          },
+          {
+            "title": " 5320 MHz [64] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5500 MHz [100]",
+            "path": "/hi"
+          },
+          {
+            "title": " 5520 MHz [104] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5540 MHz [108] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5560 MHz [112] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5580 MHz [116] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5600 MHz [120] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5620 MHz [124] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5640 MHz [128] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5660 MHz [132] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5680 MHz [136] ",
+            "path": "/hi"
+          },
+          {
+            "title": " 5700 MHz [140] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5720 MHz [144] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5745 MHz [149] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5765 MHz [153] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5785 MHz [157] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5805 MHz [161] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5825 MHz [165]",
+            "path": "/hi"
+          }
+        ]
+      },
+      {
+        "title": "6GHz ",
+        "childrens": [
+          {
+            "title": " 5955 MHz [1] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5975 MHz [5] ",
+            "path": "/hi"
+          },
+          {
+            "title": "5995 MHz [9] ",
+            "path": "/hi"
+          }
+          ,
+          {
+            "title": "6015 MHz [13]",
+            "path": "/hi"
+          }
+          ,
+          {
+            "title": "6035 MHz [17] ",
+            "path": "/hi"
+          },
+          {
+            "title": " 6055 MHz [21] ",
+            "path": "/hi"
+          },
+          {
+            "title": "6075 MHz [25] ",
+            "path": "/hi"
+          },
+          {
+            "title": "6095 MHz [29] ",
+            "path": "/hi"
+          },
+          {
+            "title": "6115 MHz [33] ",
+            "path": "/hi"
+          },
+          {
+            "title": " 6135 MHz [37] ",
+            "path": "/hi"
+          },
+          {
+            "title": " 6155 MHz [41] ",
+            "path": "/hi"
+          },
+          {
+            "title": "6175 MHz [45] ",
+            "path": "/hi"
+          },
+          {
+            "title": "6195 MHz [49]",
+            "path": "/hi"
+          },
+          {
+            "title": "6215 MHz [53] ",
+            "path": "/hi"
+          },
+          {
+            "title": " 6235 MHz [57] ",
+            "path": "/hi"
+          },
+          {
+            "title": "6255 MHz [61] ",
+            "path": "/hi"
+          },
+          {
+            "title": "6275 MHz [65] ",
+            "path": "/hi"
+          },
+          {
+            "title": "6295 MHz [69] ",
+            "path": "/hi"
+          },
+          {
+            "title": "6315 MHz [73]  ",
+            "path": "/hi"
+          },
+          {
+            "title": " 6335 MHz [77]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6355 MHz [81]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6375 MHz [85]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6395 MHz [89]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6415 MHz [93]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6435 MHz [97]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6455 MHz [101] ",
+            "path": "/hi"
+          },
+          {
+            "title": "6475 MHz [105] ",
+            "path": "/hi"
+          },
+          {
+            "title": " 6495 MHz [109]  ",
+            "path": "/hi"
+          },
+          {
+            "title": " 6515 MHz [113]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6535 MHz [117]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6555 MHz [121]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6575 MHz [125]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6595 MHz [129]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6615 MHz [133]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6635 MHz [137]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6655 MHz [141]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6675 MHz [145]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6695 MHz [149]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6715 MHz [153]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6735 MHz [157]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6755 MHz [161]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6775 MHz [165]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6795 MHz [169]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6815 MHz [173]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6835 MHz [177]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6855 MHz [181]  ",
+            "path": "/hi"
+          },
+          {
+            "title": " 6875 MHz [185]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6895 MHz [189]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6915 MHz [193]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6935 MHz [197]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6955 MHz [201]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "6975 MHz [205]   ",
+            "path": "/hi"
+          },
+          {
+            "title": "6995 MHz [209]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "7015 MHz [213]   ",
+            "path": "/hi"
+          },
+          {
+            "title": "7035 MHz [217]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "7055 MHz [221]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "7075 MHz [225]   ",
+            "path": "/hi"
+          },
+          {
+            "title": "7095 MHz [229]  ",
+            "path": "/hi"
+          },
+          {
+            "title": "7095 MHz [229]   ",
+            "path": "/hi"
+          }
+
+
+        ]
+      }
+    ]
+  },
+ 
+  {
+    "title": "Interface",
+    "main":"Interface:",
+    "childrens": [
+      {
+        "title": "2.4GHz",
+        "childrens": [
+          {
+            "title": "802.11b",
+            "path": "/Canon-DSLR"
+          },
+          {
+            "title": "802.11g ",
+            "path": "/Nekon-DSLR"
+          },
+          {
+            "title": "802.11n",
+            "path": "/Camera-Lens"
+          },
+          {
+            "title": "802.11ax ",
+            "path": "/Camera-Lens"
+          }
+          
+          
+        ]
+      },
+      {
+        "title": "5GHz ",
+        "childrens": [
+          {
+            "title": "802.11a",
+            "path": "/Canon-DSLR"
+          },
+          {
+            "title": "802.11n",
+            "path": "/hi"
+          }
+          ,
+          {
+            "title": "802.11ac",
+            "path": "/hi"
+          },
+          {
+            "title": "802.11ax",
+            "path": "/hi"
+          }
+          
+        ]
+      },
+      {
+        "title": "6GHz ",
+        "childrens": [
+          {
+            "title": " 802.11ax",
+            "path": "/hi"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Channel",
+    "main":"BanChanneld:",
+    "childrens": [
+      {
+        "title": "2.4GHz",
+        "childrens": [
+          {
+            "title": "802.11b",
+            "path": "/Canon-DSLR"
+          },
+          {
+            "title": "802.11g ",
+            "path": "/Nekon-DSLR"
+          },
+          {
+            "title": "802.11n",
+            "path": "/Camera-Lens"
+          },
+          {
+            "title": "802.11ax ",
+            "path": "/Camera-Lens"
+          }
+          
+          
+        ]
+      },
+      {
+        "title": "5GHz ",
+        "childrens": [
+          {
+            "title": "802.11a",
+            "path": "/Canon-DSLR"
+          },
+          {
+            "title": "802.11n",
+            "path": "/hi"
+          }
+          ,
+          {
+            "title": "802.11ac",
+            "path": "/hi"
+          },
+          {
+            "title": "802.11ax",
+            "path": "/hi"
+          }
+          
+        ]
+      },
+      {
+        "title": "6GHz ",
+        "childrens": [
+          {
+            "title": " 802.11ax",
+            "path": "/hi"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Bandwidth",
+    "main":"Bandwidth:",
+    "childrens": [
+      {
+        "title": "2.4GHz",
+        "childrens": [
+          {
+            "title": "802.11b",
+            "path": "/Canon-DSLR"
+          },
+          {
+            "title": "802.11g ",
+            "path": "/Nekon-DSLR"
+          },
+          {
+            "title": "802.11n",
+            "path": "/Camera-Lens"
+          },
+          {
+            "title": "802.11ax ",
+            "path": "/Camera-Lens"
+          }
+          
+          
+        ]
+      },
+      {
+        "title": "5GHz ",
+        "childrens": [
+          {
+            "title": "802.11a",
+            "path": "/Canon-DSLR"
+          },
+          {
+            "title": "802.11n",
+            "path": "/hi"
+          }
+          ,
+          {
+            "title": "802.11ac",
+            "path": "/hi"
+          },
+          {
+            "title": "802.11ax",
+            "path": "/hi"
+          }
+          
+        ]
+      },
+      {
+        "title": "6GHz ",
+        "childrens": [
+          {
+            "title": " 802.11ax",
+            "path": "/hi"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "MCS",
+    "main": "MCS",
+    "childrens": [
+      {
+        "title": "2.4GHz",
+        "childrens": [
+          {
+            "title": "802.11b",
+            "path": "/Canon-DSLR"
+          },
+          {
+            "title": "802.11g ",
+            "path": "/Nekon-DSLR"
+          },
+          {
+            "title": "802.11n",
+            "path": "/Camera-Lens"
+          },
+          {
+            "title": "802.11ax ",
+            "path": "/Camera-Lens"
+          }
+          
+          
+        ]
+      },
+      {
+        "title": "5GHz ",
+        "childrens": [
+          {
+            "title": "802.11a",
+            "path": "/Canon-DSLR"
+          },
+          {
+            "title": "802.11n",
+            "path": "/hi"
+          }
+          ,
+          {
+            "title": "802.11ac",
+            "path": "/hi"
+          },
+          {
+            "title": "802.11ax",
+            "path": "/hi"
+          }
+          
+        ]
+      },
+      {
+        "title": "6GHz ",
+        "childrens": [
+          {
+            "title": " 802.11ax",
+            "path": "/hi"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "VMM priority",
+    "main":"VMM priority:",
+    "childrens": [
+      {
+        "title": "2.4GHz",
+        "childrens": [
+          {
+            "title": "802.11b",
+            "path": "/Canon-DSLR"
+          },
+          {
+            "title": "802.11g ",
+            "path": "/Nekon-DSLR"
+          },
+          {
+            "title": "802.11n",
+            "path": "/Camera-Lens"
+          },
+          {
+            "title": "802.11ax ",
+            "path": "/Camera-Lens"
+          }
+          
+          
+        ]
+      },
+      {
+        "title": "5GHz ",
+        "childrens": [
+          {
+            "title": "802.11a",
+            "path": "/Canon-DSLR"
+          },
+          {
+            "title": "802.11n",
+            "path": "/hi"
+          }
+          ,
+          {
+            "title": "802.11ac",
+            "path": "/hi"
+          },
+          {
+            "title": "802.11ax",
+            "path": "/hi"
+          }
+          
+        ]
+      },
+      {
+        "title": "6GHz ",
+        "childrens": [
+          {
+            "title": " 802.11ax",
+            "path": "/hi"
+          }
+        ]
+      }
+    ]
+  }
+
+]
