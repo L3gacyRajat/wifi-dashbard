@@ -20,13 +20,13 @@ const Topnavbar2 = () => {
   return (
     <div className="h-[50px] py-2 ">
       <button
-        className="w-7 h-7 rounded-md flex items-center justify-center border border-purple absolute  right-0 m-4 "
+        className="w-7 h-7 rounded-md flex items-center justify-center border border-purple dark:border-[#00c2ff] absolute  right-0 m-4 "
         onClick={toggleTheme}
       >
         {isLightMode ? (
-          <MdDarkMode className="text-purple" />
+          <MdDarkMode className="text-purple dark:text-[#00c2ff]" />
         ) : (
-          <MdLightMode className="text-purple" />
+          <MdLightMode className="text-purple dark:text-[#00c2ff]" />
         )}
       </button>
     </div>

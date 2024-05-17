@@ -157,15 +157,17 @@ const Wifi = () => {
 
   return (
     <>
-      <div className="bg-graphbg w-full h-[90vh] bg-graphbg dark:bg-white shadow-md rounded-md p-3  gap-2 mr-4  ">
-        <div className=" text-base font-medium m-4 px-8 text-purple">Wifi</div>
-        <div className="flex items-center flex-col relative top-[17%] check3 ">
+      <div className="bg-graphbg w-full h-[100vh] overflow-scroll bg-graphbg dark:bg-white shadow-md rounded-md p-3  gap-2 mr-4 sidebar ">
+        <div className=" text-base font-medium m-4 px-8 text-purple dark:text-[#00c2ff]">
+          Wifi
+        </div>
+        <div className="flex items-center flex-col relative top-[15%] check3 ">
           <Sideebar />
           <div className="flex gap-4 check2">
-            <button className="px-4 py-2 w-32 bg-purple text-white rounded-md mt-5">
+            <button className="px-4 py-2 w-32 bg-purple dark:bg-[#00c2ff] text-white rounded-md mt-5">
               Start/update
             </button>
-            <button className="px-4 py-2 w-32 bg-purple text-white rounded-md mt-5">
+            <button className="px-4 py-2 w-32 bg-purple dark:bg-[#00c2ff] text-white rounded-md mt-5">
               Stop
             </button>
           </div>

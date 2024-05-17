@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import "./SideBarItem.scss";
 
-const SidebarItem = ({ items }) => {
-  const [open, setOpen] = useState(false); // Initialize open state as false
-
+const SidebarItem = ({ items, toggleSidebar, index, open }) => {
+  const [isopen, setisopen] = useState(false);
   const handleParentClick = () => {
-    // Toggle the state of the parent
-    setOpen(!open);
+    toggleSidebar(index);
+    setisopen(!isopen);
   };
 
   return (
@@ -17,14 +16,14 @@ const SidebarItem = ({ items }) => {
         </div>
         <div
           onClick={handleParentClick} // Use custom click handler for parent
-          className="flex justify-between items-center px-2 py-2 text-white dark:text-black"
+          className="flex justify-between items-center px-2 py-2 text-gray-400 border-b-2 border-gray-400"
         >
           <span>
             <span>{items.icon}</span> {items.title}
           </span>
           <span
             className={
-              open
+              open && isopen
                 ? "rotate-180 cursor-pointer transition-all"
                 : "cursor-pointer transition-all"
             }
@@ -35,8 +34,8 @@ const SidebarItem = ({ items }) => {
       </div>
       <div
         className={
-          open
-            ? "absolute h-auto pl-2 left-[270px] w-[250px] bg-graphbg text-white bg-navbarbg rounded-md z-50"
+          open && isopen
+            ? "absolute h-auto pl-2 sm:left-[270px] sm:w-[250px] bg-graphbg dark:bg-[#00c2ff] text-white bg-navbarbg rounded-md z-50 left-[145px] w-[160px]"
             : "h-0 overflow-hidden"
         }
       >

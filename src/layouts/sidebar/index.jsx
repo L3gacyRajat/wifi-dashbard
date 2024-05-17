@@ -128,7 +128,7 @@ const Sidebar = () => {
                 }
           }
           transition={{ duration: 0 }}
-          className="absolute w-fit h-fit md:block z-50 hidden right-2 bottom-3 cursor-pointer bg-purple p-2 rounded-full"
+          className="absolute w-fit h-fit md:block z-50 hidden right-2 bottom-3 cursor-pointer bg-purple dark:bg-[#00c2ff] p-2 rounded-full"
         >
           <IoIosArrowBack size={14} className="text-white" />
         </motion.div>

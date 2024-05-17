@@ -469,7 +469,7 @@
   },
   {
     "title": "Channel",
-    "main":"BanChanneld:",
+    "main":"BanChannelId:",
     "childrens": [
       {
         "title": "2.4GHz",
